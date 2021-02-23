@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //用RegExp 创建对象
+        const str = new RegExp(/1111/);
+
+        //字面量创建
+        const strs = /123/;
+        const str1 = /^123$/;//精确表达
+        const str2 = /^123/;//^以123开头的就可以
+        const str3 = /123$/;//$以123结尾
+
+        //test 用来检查是否符合正则表达式标准
+        let flag = strs.test('1238888');
+        console.log(flag);
+
+        let flag1 = str1.test('123');
+        console.log(flag1);
+
+        let flag2 = str2.test('1234');
+        console.log(flag2);
+
+        let flag3 = str3.test('121123');
+        console.log(flag3);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery.min.js"></script>
+</head>
+
+<body>
+    <div style="margin-bottom: 15px;">
+        <input type="text" id="username" placeholder="请输入姓名">
+        <input type="text" id="age" placeholder="请输入性别">
+        <input type="text" id="sex" placeholder="请输入年龄">
+        <input type="button" value="提交" id="btn">
+    </div>
+    <table border="1" width="540">
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <script>
+        // 发布留言并存储到本地
+
+        // 要求1：点击提交按钮，让用户输入的内容分别加入到表格对应的列表中
+
+        // 要求2：点击每一行的删除按钮，能删除当前行
+
+        // 要求3：刷新页面时能保留当前的页面效果（数据状态不会消失）
+
+        // 要求4：代码规范
+        const tbody = document.querySelector('tbody');
+        const ipt1 = document.querySelector('#username');
+        const ipt2 = document.querySelector('#age');
+        const ipt3 = document.querySelector('#sex');
+        const btn = document.querySelector('#btn');
+
+        btn.addEventListener('click', function () {
+            const data = [
+                {
+                    name: ipt1.value,
+                    age: ipt2.value,
+                    sex: ipt3.value
+                }
+            ]
+            data.forEach(function (item) {
+                const tr = `<tr>
+                    <td>${item.name}</td>
+                    <td>${item.age}</td>
+                    <td>${item.sex}</td>
+                    <td><a href="javascript:;">删除</a></td>
+                </tr>`;
+                tbody.insertAdjacentHTML('beforeend', tr);
+
+                var ass = document.querySelectorAll('a');
+                for (var i = 0; i < ass.length; i++) {
+                    ass[i].onclick = function () {
+                        tbody.removeChild(this.parentNode.parentNode);
+                    }
+                }
+            })
+        })
+
+    </script>
+</body>
+
+</html>

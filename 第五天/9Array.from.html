@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //声明的是一个伪数组
+        var arr = {
+            '0': '1', //0 索引 1=>对象
+            '1': '2',
+            'length': 2
+        }
+        // 把伪数组转化为数组的一个方法
+        var ary = Array.from(arr);
+        console.log(ary);
+        //Map返回一个数组
+        var res = ary.map(item => {
+            return {
+                name: item * 2,
+                age: 12,
+            }
+        })
+        console.log(res);
+
+    </script>
+</body>
+
+</html>

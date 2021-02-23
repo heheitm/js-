@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="margin-bottom: 15px;">
+        <input type="text" id="username" placeholder="请输入姓名">
+        <input type="text" id="age" placeholder="请输入性别">
+        <input type="text" id="sex" placeholder="请输入年龄">
+        <input type="button" value="提交" id="btn">
+    </div>
+    <table border="1" width="540">
+        <thead>
+            <tr>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <script>
+        var tbody = document.querySelector('tbody');
+        var oUsername = document.querySelector('#username');
+        var oAge = document.querySelector('#age');
+        var oSex = document.querySelector('#sex');
+        var oBtn = document.querySelector('#btn');
+        oBtn.onclick = function () {
+            // 1. 获取
+            var data = loadData();
+            // 2. 修改
+            var o = {
+                username: oUsername.value,
+                age: oAge.value,
+                sex: oSex.value
+            };
+            data.push(o);
+            // 3. 存储
+            saveDate(data);
+            // 4. 渲染
+            renderData();
+        };
+
+        function loadData() {
+            var data = localStorage.getItem('message');
+            return data ? JSON.parse(data) : [];
+        }
+        function saveDate(data) {
+            localStorage.setItem('message', JSON.stringify(data));
+        }
+        renderData();
+        function renderData() {
+            // 渲染之前先清空数据
+            tbody.innerHTML = '';
+            var datas = loadData();
+            for (var i = 0; i < datas.length; i++) {
+                // 创建行
+                var tr = document.createElement('tr');
+                // 创建列
+                for (var attr in datas[i]) {
+                    var td = document.createElement('td');
+                    td.innerHTML = datas[i][attr];
+                    tr.appendChild(td);
+                }
+                // 创建删除
+                var td = document.createElement('td');
+                td.innerHTML = '<a href="javascript:;" id="' + i + '">删除</a>'
+                tr.appendChild(td);
+                tbody.appendChild(tr);
+            }
+        }
+        // 删除，事件委托
+        tbody.addEventListener('click', function (e) {
+            if (e.target.tagName.toLowerCase() === 'a') {
+                var data = loadData();
+                var id = parseInt(e.target.id);
+                data.splice(id, 1);
+                saveDate(data);
+                renderData();
+            }
+        });
+    </script>
+</body>
+
+</html>

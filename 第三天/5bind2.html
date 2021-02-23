@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>按钮</button>
+    <button>按钮</button>
+    <button>按钮</button>
+    <script>
+        var btn = document.querySelectorAll('button');
+        for (let i = 0; i < btn.length; i++) {
+            btn[i].addEventListener('click', function () {
+                this.disabled = true;      //this指向的是btn
+                setTimeout(function () {
+                    this.disabled = false; //定时器中this指向window 
+                }.bind(this), 3000);       //这个bind(this)指向的是被点击的btn
+            })
+        }
+
+    </script>
+</body>
+
+</html>

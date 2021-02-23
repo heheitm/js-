@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //let age=10; 指向的不是全局变量
+        var age = 100;// var 指向的是window 即全局变量
+        //对象没有自己的作用域
+        var obj = {
+            age: 20,
+            say: () => {
+                //箭头函数 指向的是全局变量  window
+                alert(this.age)
+            }
+        }
+        obj.say();
+    </script>
+</body>
+
+</html>

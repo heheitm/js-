@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        class Father {
+            constructor(name) {
+                this.name = name;
+            }
+            show() {
+                console.log(this.name);
+            }
+        }
+        class Son extends Father {
+           // constructor(name) {
+           //     super(name);
+           // }
+        }
+        const son = new Son('小米');
+        console.log(son);
+        son.show();
+    </script>
+</body>
+
+</html>

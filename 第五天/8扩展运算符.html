@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+      //  扩展运算符用于数组合并
+        let arr1 = [1, 2, 3];
+        let arr2 = [4, 5, 6];
+        let arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+
+        //合并数组第二张方法
+        let ary1 = [1, 2, 3];
+        let ary2 = [4, 5, 6];
+        //将...ary2添加到ary1里面
+        ary1.push(...ary2);
+        console.log(ary1);
+    </script>
+</body>
+
+</html>

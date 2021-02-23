@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //const reg = /^\d{3}-\d{8}|\d{4}-\d{7}$/;
+        //const regs = /^\d{3,4}-\d{7,8}$/;
+        var str = /^[a-zA-Z0-9_-]{6,16}$/;
+        // 这个模式用户只能输入英文字母 数字 下划线 短横线 但是有边界符和[],这就限定了只能多选一
+        var flag = str.test('1213121');
+        console.log(flag);
+    </script>
+</body>
+
+</html>

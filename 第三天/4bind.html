@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var o = {
+            name: 'andy'
+        }
+        function fn(a) {
+            console.log(this);
+            console.log(a);
+        }
+        var f = fn.bind(o, 1);
+        // o 在fun 函数运行时指定的This值
+        // 1 给a值赋
+        f();
+    </script>
+</body>
+
+</html>

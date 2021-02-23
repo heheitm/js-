@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function fn(x, y) {
+          //  console.log('我是 大数据的');
+            //this 指向window
+            console.log(this);
+            console.log(x + y);
+        }
+        var obj = {
+            name: 'andy'
+        }
+        //
+     //   fn.call();
+        //call() 可以改变this的指向  可以调用函数
+        fn.call(obj, 1, 2);
+    </script>
+</body>
+
+</html>

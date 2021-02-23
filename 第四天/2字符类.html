@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const str = /^[123]$/;//[]表示一系列字符里面挑选其中一个 三选一
+        const str1 = /^[a-z]$///[-]表示范围类 a到z
+        let flag = str.test('1');
+        console.log(flag);
+
+        let flag1=str1.test('s');
+        console.log(flag1);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 400px;
+            border: 1px solid #000;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+
+        td,
+        th {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        input {
+            width: 50px;
+        }
+
+        .search {
+            width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function () {
+            // 利用新增数组方法操作数据
+            const data = [{
+                id: 1,
+                pname: '小米',
+                price: 3999
+            }, {
+                id: 2,
+                pname: 'oppo',
+                price: 999
+            }, {
+                id: 3,
+                pname: '荣耀',
+                price: 1299
+            }, {
+                id: 4,
+                pname: '华为',
+                price: 1999
+            },
+            ];
+            const tbody = document.querySelector('tbody');
+
+            const btn = document.querySelector('.search-price');
+
+            const start = document.querySelector('.start');
+
+            const end = document.querySelector('.end');
+
+            const product = document.querySelector('.product');
+
+            const search_pro = document.querySelector('.search-pro');
+            //先调用
+            setDate(data);
+
+            //封装函数
+            function setDate(myDate) {
+                //调用 就清空tbody
+                tbody.innerHTML = '';
+                myDate.forEach(function (value) {
+                    //var tr = document.createElement('tr');
+                    //tr.innerHTML = `<td>${value.id}</td><td>${value.pname}</td ><td>${value.price}</td>`;
+                    //tbody.appendChild(tr)
+                    //创建tr
+                    const tr = `<tr><td>${value.id}</td><td>${value.pname}</td ><td>${value.price}</td></tr>`;
+                    // 插入tr
+                    tbody.insertAdjacentHTML('beforeend', tr)
+                })
+            }
+            //给按钮绑定事件
+            btn.addEventListener('click', function () {
+                //filter 遍历 返回新数组
+                const newArr = data.filter(function (item) {
+                    return item.price > start.value && item.price < end.value;
+                })
+                // console.log(newArr);
+                //点击事件 调用函数
+                setDate(newArr);
+            })
+
+            //search_pro.addEventListener('click', function () {
+            //    const newArrs = data.filter(function (item) {
+            //        return item.pname === product.value;
+            //    })
+            //    setDate(newArrs);  
+            //})
+
+            // 查询数组的唯一关系 用some 更合适 
+            search_pro.addEventListener('click', function () {
+                //声明一个数组 由于some返回的是一个布尔值 索引声明一个数组
+                let arr = [];
+                data.some(function (item) {
+                    if (item.pname === product.value) {
+                        //将元素接收到arr 
+                        arr.push(item);
+                        return true;//必须return true    否则some没意义
+                    }
+                })
+                setDate(arr);
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div class="search">
+        按照价格查询: <input type="text" class="start">
+        - <input type="text" class="end">
+        <button class="search-price">搜索</button>
+        按照商品名称查询: <input type="text" class="product">
+        <button class="search-pro">查询</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>产品名称</th>
+                <th>价格</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

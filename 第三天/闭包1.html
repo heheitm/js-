@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var car = (function () {
+            var star = 13;
+            var total = 0;
+            return {
+                price: function (n) {
+                    if (n <= 3) {
+                        total = star;
+                    } else {
+                        total = star + (n - 3) * 5;
+                    }
+                    return total;
+                },
+                yd: function (flag) {
+                    return flag ? total + 10 : total;
+                }
+            }
+        })();
+        const p = car.price(2);
+        const t = car.yd(true);
+        console.log(p, t);
+    </script>
+</body>
+
+</html>

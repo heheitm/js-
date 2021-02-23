@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //中括号里面的^是表示取反的意思
+        //var reg2 = /^[^a-zA-Z0-9_-]$/;后面的_ -代表的是 可以是下划线 减号
+        const str = /^[^123]$/;
+        const str1 = /^[123]$/;
+
+        let flag = str.test('1');
+        let flags = str1.test('1');
+
+        console.log(flag);
+        console.log(flags);
+    </script>
+</body>
+
+</html>
